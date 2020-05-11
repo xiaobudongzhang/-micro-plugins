@@ -11,11 +11,11 @@ import (
 
 var (
 	sessionIdNamePrefix = "session-id-"
-	store               *session.CookieStore
+	store               *sessions.CookieStore
 )
 
 func init() {
-	store = seesions.NewCookieStore([]byte("OnNUU5RUr6Ii2HMI0d6E54bXTS52tCCL"))
+	store = sessions.NewCookieStore([]byte("OnNUU5RUr6Ii2HMI0d6E54bXTS52tCCL"))
 }
 
 func GetSession(w http.ResponseWriter, r *http.Request) *sessions.Session {
