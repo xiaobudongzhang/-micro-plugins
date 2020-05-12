@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"sync"
 
-	"github.com/xiaobudongzhang/micro-basic/config"
+	"github.com/xiaobudongzhang/micro-basic/basic"
 
 	"github.com/micro/go-micro/v2/util/log"
 )
@@ -16,7 +16,10 @@ var (
 	m       sync.RWMutex
 )
 
-func Init() {
+func init() {
+	basic.Register(initDB)
+}
+func initDB() {
 	m.Lock()
 	defer m.Unlock()
 
@@ -28,9 +31,8 @@ func Init() {
 		return
 	}
 
-	if config.GetMysqlConfig().GetEnabled() {
-		initMysql()
-	}
+	initMysql()
+
 	inited = true
 }
 
