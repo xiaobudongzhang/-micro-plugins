@@ -10,7 +10,7 @@ type StatusCodeTracker struct {
 	Status int
 }
 
-func (w *statusCodeTracker) WriteHeader(status int) {
+func (w *StatusCodeTracker) WriteHeader(status int) {
 	w.Status = status
 	w.ResponseWriter.WriteHeader(status)
 }
