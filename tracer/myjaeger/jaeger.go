@@ -1,6 +1,7 @@
 package jaeger
 
 import (
+	"fmt"
 	"io"
 	"time"
 
@@ -22,7 +23,8 @@ func NewTracer(servicename string, addr string) (opentracing.Tracer, io.Closer, 
 			BufferFlushInterval: 1 * time.Second,
 		},
 	}
-
+	fmt.Println("addr")
+	fmt.Println(addr)
 	sender, err := jaeger.NewUDPTransport(addr, 0)
 	if err != nil {
 		return nil, nil, err
